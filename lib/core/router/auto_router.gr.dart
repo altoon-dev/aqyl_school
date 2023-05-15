@@ -55,6 +55,7 @@ abstract class $AppRouter extends _i9.RootStackRouter {
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i5.HomeScreen(),
+
       );
     },
     ProfileRoute.name: (routeData) {
@@ -135,9 +136,11 @@ class WelcomeRoute extends _i9.PageRouteInfo<void> {
 }
 
 /// generated route for
+
 /// [_i5.HomeScreen]
 class HomeRoute extends _i9.PageRouteInfo<void> {
   const HomeRoute({List<_i9.PageRouteInfo>? children})
+
       : super(
           HomeRoute.name,
           initialChildren: children,
