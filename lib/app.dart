@@ -1,4 +1,5 @@
 import 'package:aqyl_school/core/router/auto_router.dart';
+import 'package:aqyl_school/features/role/application/role_manager_cubit.dart';
 import 'package:aqyl_school/features/sign/bloc/auth_bloc.dart';
 import 'package:aqyl_school/features/sign/bloc/auth_state.dart';
 import 'package:aqyl_school/features/sign/repositories/auth_repository.dart';
@@ -13,8 +14,15 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthBloc(authRepository: AuthRepository()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AuthBloc(authRepository: AuthRepository()),
+        ),
+        BlocProvider(
+          create: (context) => RoleManagerCubit()..getRole(),
+        ),
+      ],
       child: ResponsiveSizer(
         builder: (context, orientation, screenType) {
           return MaterialApp.router(

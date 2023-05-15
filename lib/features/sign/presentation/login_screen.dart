@@ -55,8 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
         listener: (context, state) {
           if (state is Authenticated) {
             // Navigating to the dashboard screen if the user is authenticated
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const HomeScreen()));
+            context.router.replace(HomeRoute());
           }
           if (state is AuthError) {
             // Showing the error message if the user has entered invalid credentials
