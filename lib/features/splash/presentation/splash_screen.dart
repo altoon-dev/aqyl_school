@@ -17,7 +17,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       context.read<AuthBloc>().add(AuthCheckRequested());
     });
     super.initState();
@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
         if (state is Authenticated) {
           context.router.replace(HomeRoute());
         } else if (state is UnAuthenticated) {
-          context.router.replace(WelcomeRoute());
+          context.router.replace(RoleRoute());
         }
       },
       child: Scaffold(

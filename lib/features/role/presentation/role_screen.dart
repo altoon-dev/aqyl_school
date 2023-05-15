@@ -8,8 +8,8 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../widgets/titles/logo_title.dart';
 
 @RoutePage()
-class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key});
+class RoleScreen extends StatelessWidget {
+  const RoleScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
