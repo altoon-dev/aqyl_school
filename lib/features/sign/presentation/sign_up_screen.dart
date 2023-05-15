@@ -98,6 +98,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: Column(
                     children: [
                       InputField(
+                        controller: _emailController,
                         label: 'Email',
                         focusNode: _emailNode,
                         validator: (value) {
@@ -109,6 +110,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       SizedBox(height: 3.h,),
                       InputField(
+                        controller: _passwordController,
                         label: "Password",
                         focusNode: _passwordNode,
                         obscureText: true,

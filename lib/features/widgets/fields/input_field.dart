@@ -7,7 +7,8 @@ class InputField extends StatelessWidget {
     this.focusNode,
     this.keyboardType,
     this.obscureText = false,
-    this.validator,
+    this.validator, this.controller,
+
   });
 
   final String label;
@@ -15,9 +16,12 @@ class InputField extends StatelessWidget {
   final TextInputType? keyboardType;
   final bool obscureText;
   final String? Function(String?)? validator;
+  final TextEditingController? controller;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       focusNode: focusNode,
       keyboardType: keyboardType,
       obscureText: obscureText,

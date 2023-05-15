@@ -52,7 +52,7 @@ abstract class $AppRouter extends _i11.RootStackRouter {
     ForegetPass.name: (routeData) {
       return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.ForegetPass(),
+        child: const _i5.ForgetPass(),
       );
     },
     ProfileRoute.name: (routeData) {
@@ -137,7 +137,8 @@ class HomeRoute extends _i11.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.ForegetPass]
+
+/// [_i5.ForgetPass]
 class ForegetPass extends _i11.PageRouteInfo<void> {
   const ForegetPass({List<_i11.PageRouteInfo>? children})
       : super(
