@@ -1,7 +1,7 @@
 import 'package:aqyl_school/constants/color_constants.dart';
 import 'package:aqyl_school/features/home/presentation/home_screen.dart';
 import 'package:aqyl_school/features/sign/bloc/auth_event.dart';
-import 'package:aqyl_school/features/sign/presentation/signup_page.dart';
+import 'package:aqyl_school/features/sign/presentation/sign_up_screen.dart';
 import 'package:aqyl_school/features/widgets/buttons/google_button.dart';
 import 'package:aqyl_school/features/widgets/titles/logo_title.dart';
 import 'package:aqyl_school/features/widgets/titles/welcome_text.dart';
@@ -15,15 +15,15 @@ import '../../widgets/buttons/default_button.dart';
 import '../../widgets/fields/input_field.dart';
 import '../bloc/auth_bloc.dart';
 import '../bloc/auth_state.dart';
-
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+@RoutePage()
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -147,11 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                     alignment: Alignment.bottomCenter,
                     child: InkWell(
                       onTap: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SignUp()),
-                        );
+                        context.router.push(const SignUpRoute());
                       },
                       child: RichText(
                         text: TextSpan(

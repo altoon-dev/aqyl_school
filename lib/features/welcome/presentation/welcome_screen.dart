@@ -35,7 +35,7 @@ class WelcomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ColoredCard(
-                onTap: () => context.router.push(const AuthRoute()),
+                onTap: () => context.router.push(const LoginRoute()),
                 color: Colors.green,
                 child: Text(
                   "Я - ученик",
@@ -47,7 +47,7 @@ class WelcomeScreen extends StatelessWidget {
               ),
               SizedBox(width: 2.5.h),
               ColoredCard(
-                onTap: () => context.router.push(const AuthRoute()),
+                onTap: () => context.router.push(const LoginRoute()),
                 color: Colors.red,
                 child: Text(
                   "Я - учитель",
@@ -64,7 +64,7 @@ class WelcomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ColoredCard(
-                onTap: () => context.router.push(const AuthRoute()),
+                onTap: () => context.router.push(const LoginRoute()),
                 color: const Color(0xFF556FFD),
                 child: Text(
                   "Я - родитель",

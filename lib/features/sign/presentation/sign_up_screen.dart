@@ -1,5 +1,5 @@
 import 'package:aqyl_school/features/home/presentation/home_screen.dart';
-import 'package:aqyl_school/features/sign/presentation/login_page.dart';
+import 'package:aqyl_school/features/sign/presentation/login_screen.dart';
 import 'package:aqyl_school/features/widgets/titles/logo_title.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:email_validator/email_validator.dart';
@@ -18,15 +18,15 @@ import '../bloc/auth_event.dart';
 import '../bloc/auth_state.dart';
 
 
-
-class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
+@RoutePage()
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -137,7 +137,7 @@ class _SignUpState extends State<SignUp> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const LoginPage()),
+                            builder: (context) => const LoginScreen()),
                       );
                     },
                     child: RichText(
