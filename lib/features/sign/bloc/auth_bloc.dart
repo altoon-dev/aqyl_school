@@ -6,7 +6,10 @@ import 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
   AuthBloc({required this.authRepository}) : super(UnAuthenticated()) {
-    // When User Presses the SignIn Button, we will send the SignInRequested Event to the AuthBloc to handle it and emit the Authenticated State if the user is authenticated
+    on<AuthCheckRequested>((event, emit) async {
+      emit(Loading());
+        authRepository.getSignedInUserId().fold(() => emit(UnAuthenticated()), (_) => emit(Authenticated()));
+    });
     on<SignInRequested>((event, emit) async {
       emit(Loading());
       try {
