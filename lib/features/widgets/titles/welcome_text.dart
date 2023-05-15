@@ -4,6 +4,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 class WelcomeText extends StatelessWidget {
   const WelcomeText({
     super.key,
+
   });
 
   @override

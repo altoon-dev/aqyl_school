@@ -9,7 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:aqyl_school/core/router/nav_router.dart' as _i1;
-import 'package:aqyl_school/features/auth/presentation/auth_screen.dart' as _i5;
+import 'package:aqyl_school/features/sign/presentation/forget_pass.dart' as _i5;
 import 'package:aqyl_school/features/chat/presentation/chat_screen.dart' as _i4;
 import 'package:aqyl_school/features/course/presentation/course_screen.dart'
 as _i3;
@@ -53,7 +53,7 @@ abstract class $AppRouter extends _i9.RootStackRouter {
     AuthRoute.name: (routeData) {
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i5.AuthScreen(),
+        child: const _i5.ForegetPass(),
       );
     },
     WelcomeRoute.name: (routeData) {
@@ -134,7 +134,7 @@ class ChatRoute extends _i9.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.AuthScreen]
+/// [_i5.ForegetPass]
 class AuthRoute extends _i9.PageRouteInfo<void> {
   const AuthRoute({List<_i9.PageRouteInfo>? children})
       : super(

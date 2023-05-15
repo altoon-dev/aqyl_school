@@ -9,14 +9,14 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../widgets/titles/logo_title.dart';
 
 @RoutePage()
-class AuthScreen extends StatefulWidget {
-  const AuthScreen({super.key});
+class ForegetPass extends StatefulWidget {
+  const ForegetPass({super.key});
 
   @override
-  State<AuthScreen> createState() => _AuthScreenState();
+  State<ForegetPass> createState() => _ForegetPassState();
 }
 
-class _AuthScreenState extends State<AuthScreen> {
+class _ForegetPassState extends State<ForegetPass> {
   late FocusNode _emailNode;
   late FocusNode _passwordNode;
 
@@ -46,22 +46,30 @@ class _AuthScreenState extends State<AuthScreen> {
             SizedBox(height: 5.h),
             const WelcomeText(),
             SizedBox(height: 5.h),
+            Text('Введите почту', style: TextStyle(fontSize: 0.33.dp, fontWeight: FontWeight.bold,),),
             InputField(
               label: "Email",
               focusNode: _emailNode,
             ),
             SizedBox(height: 2.5.h),
-            InputField(
-              label: "Password",
-              focusNode: _passwordNode,
-              obscureText: true,
-            ),
-            SizedBox(height: 5.h),
             DefaultButton(
-              onPressed: () => context.router.push(
-                const NavRouter(),
-              ),
-              child: const Text("Войти"),
+              onPressed: () {
+                 showDialog(
+                  context: context,
+                  builder: (ctx) => AlertDialog(
+                    content: Text("На вашу почту будет отправлено письмо, перейдите по ссылке для восстановления пароля", style: TextStyle(fontSize: 0.33.dp, fontWeight: FontWeight.bold,),),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(ctx).pop();
+                        },
+                        child: Text("Хорошо",style:TextStyle(fontSize: 0.33.dp, fontWeight: FontWeight.bold,),),
+                      ),
+                    ],
+                  ),
+                );
+              },
+              child: const Text("Восстановить"),
             ),
           ],
         ),
