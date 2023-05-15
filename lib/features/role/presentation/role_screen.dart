@@ -1,8 +1,11 @@
 import 'package:aqyl_school/core/router/auto_router.gr.dart';
+import 'package:aqyl_school/features/role/application/role_manager_cubit.dart';
+import 'package:aqyl_school/features/role/domain/role.dart';
 import 'package:aqyl_school/features/widgets/cards/colored_card.dart';
 import 'package:aqyl_school/features/widgets/titles/welcome_text.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../widgets/titles/logo_title.dart';
@@ -10,7 +13,6 @@ import '../../widgets/titles/logo_title.dart';
 @RoutePage()
 class RoleScreen extends StatelessWidget {
   const RoleScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +37,9 @@ class RoleScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ColoredCard(
-                onTap: () => context.router.push(const LoginRoute()),
+                onTap: () {
+                  setRoleAndNavigate(context, "student");
+                },
                 color: Colors.green,
                 child: Text(
                   "Я - ученик",
@@ -47,7 +51,7 @@ class RoleScreen extends StatelessWidget {
               ),
               SizedBox(width: 2.5.h),
               ColoredCard(
-                onTap: () => context.router.push(const LoginRoute()),
+                onTap: () => setRoleAndNavigate(context, "teacher"),
                 color: Colors.red,
                 child: Text(
                   "Я - учитель",
@@ -64,7 +68,7 @@ class RoleScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ColoredCard(
-                onTap: () => context.router.push(const LoginRoute()),
+                onTap: () => setRoleAndNavigate(context, "parent"),
                 color: const Color(0xFF556FFD),
                 child: Text(
                   "Я - родитель",
@@ -79,5 +83,11 @@ class RoleScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void setRoleAndNavigate(BuildContext context, String roleStr) {
+    final role = getRoleFromString(roleStr);
+    context.read<RoleManagerCubit>().setRole(role);
+    context.router.push(const LoginRoute());
   }
 }

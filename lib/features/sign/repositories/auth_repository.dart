@@ -6,6 +6,7 @@ class AuthRepository{
   final _firebaseAuth = FirebaseAuth.instance;
 
   Option<String> getSignedInUserId() {
+    print(_firebaseAuth.currentUser);
     return     optionOf(_firebaseAuth.currentUser?.uid);
   }
   Future<void> signUp({
@@ -15,7 +16,9 @@ class AuthRepository{
     try {
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
+      print("successFullSignUp");
     } on FirebaseAuthException catch (e) {
+      print(e);
       if (e.code == 'weak-password') {
         throw Exception('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
