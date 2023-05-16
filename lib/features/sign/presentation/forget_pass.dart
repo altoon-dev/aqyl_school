@@ -21,13 +21,13 @@ class ForgetPass extends StatefulWidget {
 }
 
 class _ForgetPassState extends State<ForgetPass> {
+  final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   late FocusNode _emailNode;
   late FocusNode _passwordNode;
 
   @override
   void initState() {
-    _emailController.dispose();
     _emailNode = FocusNode();
     _passwordNode = FocusNode();
     super.initState();
@@ -35,6 +35,7 @@ class _ForgetPassState extends State<ForgetPass> {
 
   @override
   void dispose() {
+    _emailController.dispose();
     _emailNode.dispose();
     _passwordNode.dispose();
     super.dispose();
@@ -44,31 +45,48 @@ class _ForgetPassState extends State<ForgetPass> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(10.w),
+        padding: EdgeInsets.only(left: 20,right: 20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const LogoTitle(),
             SizedBox(height: 5.h),
             const WelcomeText(),
             SizedBox(height: 5.h),
-            Text('Введите почту', style: TextStyle(fontSize: 0.33.dp, fontWeight: FontWeight.bold,),),
-            InputField(
-              controller: _emailController,
-              label: "Email",
-              focusNode: _emailNode,
-              validator: (value) {
-                return value != null &&
-                    !EmailValidator.validate(value)
-                    ? 'Enter a valid email'
-                    : null;
-              },
+            Align(
+              alignment: Alignment.centerLeft,
+              child:  Text(
+                  "Введите почту!",
+                  style: TextStyle(
+                    fontSize: 0.28.dp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            Form(
+              key: _formKey,
+              child: InputField(
+               controller: _emailController,
+                label: "Email",
+                focusNode: _emailNode,
+                validator: (value) {
+                  return value != null &&
+                      !EmailValidator.validate(value)
+                      ? 'Enter a valid email'
+                      : null;
+                },
+              ),
             ),
             SizedBox(height: 2.5.h),
             DefaultButton(
               onPressed: resetPassword,
-
               child: const Text("Восстановить"),
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+              ),
             ),
           ],
         ),
@@ -77,11 +95,7 @@ class _ForgetPassState extends State<ForgetPass> {
   }
 
   Future resetPassword() async {
-    showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (context) => const Center(child: CircularProgressIndicator(),)
-    );
+
     try{
       await FirebaseAuth.instance.sendPasswordResetEmail(email: _emailController.text.trim());
 

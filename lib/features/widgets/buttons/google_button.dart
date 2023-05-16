@@ -13,8 +13,8 @@ class GoogleButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton.icon(
       onPressed: onPressed,
-      icon: Image.asset('assets/images/google.png', height: 30.h, width: 30.w,),
-      label: Text('Продолжить с Google', style: TextStyle( fontSize: 0.33.dp, fontWeight: FontWeight.bold,),),
+      icon: Image.asset('assets/images/google.png', height: 2.h, width: 5.w,),
+      label: Text('Продолжить с Google', style: TextStyle( fontSize: 0.27.dp, fontWeight: FontWeight.bold,),),
 
     );
   }

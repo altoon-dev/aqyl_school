@@ -82,79 +82,89 @@ class _SignUpScreenState extends State<SignUpScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const LogoTitle(),
-                SizedBox(height: 5.h),
-                const WelcomeText(),
                 SizedBox(height: 2.h),
-                Text(
-                  "Зарегестрируйтесь!",
-                  style: TextStyle(
-                    fontSize: 0.33.dp,
-                    fontWeight: FontWeight.bold,
+                const WelcomeText(),
+                SizedBox(height: 5.h),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: Text(
+                      "Зарегестрируйтесь!",
+                      style: TextStyle(
+                        fontSize: 0.28.dp,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
-                SizedBox(height: 2.5.h),
+                SizedBox(height: 1.h),
                 Form(
                   key: _formKey,
-                  child: Column(
-                    children: [
-                      InputField(
-                        controller: _emailController,
-                        label: 'Email',
-                        focusNode: _emailNode,
-                        validator: (value) {
-                          return value != null &&
-                              !EmailValidator.validate(value)
-                              ? 'Enter a valid email'
-                              : null;
-                        },
-                      ),
-                      SizedBox(height: 3.h,),
-                      InputField(
-                        controller: _passwordController,
-                        label: "Password",
-                        focusNode: _passwordNode,
-                        obscureText: true,
-                        validator: (value) {
-                          return value != null && value.length < 6
-                              ? "Enter min. 6 characters"
-                              : null;
-                        },
-                      ),
-                       SizedBox(
-                        height: 5.h,
-                      ),
-                      DefaultButton(
-                        onPressed: () {_createAccountWithEmailAndPassword(context);},
-                        child: const Text("Зарегестрироваться"),
-                      ),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20,right: 20),
+                    child: Column(
+                      children: [
+                        InputField(
+                          controller: _emailController,
+                          label: 'Email',
+                          focusNode: _emailNode,
+                          validator: (value) {
+                            return value != null &&
+                                !EmailValidator.validate(value)
+                                ? 'Enter a valid email'
+                                : null;
+                          },
+                        ),
+                        InputField(
+                          controller: _passwordController,
+                          label: "Password",
+                          focusNode: _passwordNode,
+                          obscureText: true,
+                          validator: (value) {
+                            return value != null && value.length < 6
+                                ? "Enter min. 6 characters"
+                                : null;
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                SizedBox(height: 5.h),
+                SizedBox(
+                  height: 3.h,
+                ),
+                DefaultButton(
+                  onPressed: () {_createAccountWithEmailAndPassword(context);},
+                  child: const Text("Зарегестрироваться"),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 2.h),
                 Container(
-                  width: 500,
+                  width: 100.w,
                   alignment: Alignment.bottomCenter,
                   child: InkWell(
                     onTap: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginScreen()),
-                      );
+                      context.router.push(const LoginRoute());
                     },
                     child: RichText(
                       text: TextSpan(
                         text: "Уже есть аккаунт?",
-                        style: TextStyle( fontSize: 0.33.dp, fontWeight: FontWeight.bold,),
+                        style: TextStyle( fontSize: 0.25.dp, color: Colors.black, fontWeight: FontWeight.bold,),
                         children: <TextSpan>[
-                          TextSpan(text: ' Логин', style: TextStyle( fontSize: 0.33.dp, fontWeight: FontWeight.bold, color: Colors.yellowAccent),
+                          TextSpan(text: ' Логин', style: TextStyle( fontSize: 0.25.dp,
+          fontWeight: FontWeight.bold, color: Colors.blue),
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
-                SizedBox(height: 5.h,),
+                SizedBox(height: 1.h,),
                 GoogleButton(onPressed: () {_authenticateWithGoogle(context);}, ),
               ],
             );

@@ -87,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                     (_) => ColoredCard(
                   color: const Color(0xFFC9E464),
                   onTap: () => context.router.push(const CourseRoute()),
-                  child: const Text("Course"),
+                  child: const Text("Математика"),
                 ),
               ),
             ),

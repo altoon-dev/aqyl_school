@@ -78,73 +78,84 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const LogoTitle(),
-                  SizedBox(height: 5.h),
-                  const WelcomeText(),
                   SizedBox(height: 2.h),
-                  Text(
-                    "Войдите в профиль",
-                    style: TextStyle(
-                      fontSize: 0.33.dp,
-                      fontWeight: FontWeight.bold,
+                  const WelcomeText(),
+                  SizedBox(height: 5.h),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: Text(
+                        "Войдите в профиль",
+                        style: TextStyle(
+                          fontSize: 0.28.dp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
-                  SizedBox(height: 2.5.h),
+                  SizedBox(height: 1.h),
                   Form(
                     key: _formKey,
-                    child: Column(
-                      children: [
-                        InputField(
-                          controller: _emailController,
-                          label: 'Email',
-                          focusNode: _emailNode,
-                          validator: (value) {
-                            return value != null &&
-                                !EmailValidator.validate(value)
-                                ? 'Enter a valid email'
-                                : null;
-                          },
-                        ),
-                        SizedBox(height: 3.h,),
-                        InputField(
-                          controller: _passwordController,
-                          label: "Password",
-                          focusNode: _passwordNode,
-                          obscureText: true,
-                          validator: (value) {
-                            return value != null && value.length < 6
-                                ? "Enter min. 6 characters"
-                                : null;
-                          },
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        Align(
-                          alignment: Alignment.bottomRight,
-                          child: TextButton(
-                            onPressed: () {
-                              //route to ForgetPassword
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20,right: 20),
+                      child: Column(
+                        children: [
+                          InputField(
+                            controller: _emailController,
+                            label: 'Email',
+                            focusNode: _emailNode,
+                            validator: (value) {
+                              return value != null &&
+                                  !EmailValidator.validate(value)
+                                  ? 'Enter a valid email'
+                                  : null;
                             },
-                            child: Text(
-                              'Забыли пароль?',
-                              style: TextStyle(
-                                fontSize: 0.33.dp,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.grey, // Adjust the color as needed
-                              ),
-                            ),
                           ),
-                        ),
-                        SizedBox(height: 10.h),
-                        DefaultButton(
-                          onPressed: () => _authenticateWithEmailAndPassword(context),
-                          child: const Text("Войти"),
-                        ),
-                      ],
+                          InputField(
+                            controller: _passwordController,
+                            label: "Password",
+                            focusNode: _passwordNode,
+                            obscureText: true,
+                            validator: (value) {
+                              return value != null && value.length < 6
+                                  ? "Enter min. 6 characters"
+                                  : null;
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   ),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: TextButton(
+                      onPressed: () {
+                        context.router.push(const ForgetRoute());
+                      },
+                      child: Text(
+                        'Забыл(а) пароль?',
+                        style: TextStyle(
+                          fontSize: 0.25.dp,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey, // Adjust the color as needed
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 2.h),
+                  DefaultButton(
+                    onPressed: () => _authenticateWithEmailAndPassword(context),
+                    child: const Text("Войти"),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 2.h,),
                   Container(
-                    width: 300.w,
+                    width: 100.w,
                     alignment: Alignment.bottomCenter,
                     child: InkWell(
                       onTap: () {
@@ -152,19 +163,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       child: RichText(
                         text: TextSpan(
-                          text: "Не зарегестрированы?",
-                          style: TextStyle( fontSize: 0.33.dp,
+                          text: "Нет аккаунта?",
+                          style: TextStyle( fontSize: 0.25.dp,
+                            color: Colors.black,
                             fontWeight: FontWeight.bold,),
                           children: <TextSpan>[
-                            TextSpan(text: ' Зарегестрироваться', style: TextStyle( fontSize: 0.33.dp,
-                              fontWeight: FontWeight.bold, color: Colors.yellowAccent),
+                            TextSpan(text: ' Зарегестрироваться!', style: TextStyle( fontSize: 0.25.dp,
+                              fontWeight: FontWeight.bold, color: Colors.blue),
                             ),
                           ],
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(height: 5.h,),
+                  SizedBox(height: 1.h,),
                   GoogleButton(onPressed: () {_authenticateWithGoogle(context);}, ),
                 ],
               );

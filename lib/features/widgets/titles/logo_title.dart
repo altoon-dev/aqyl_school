@@ -13,7 +13,7 @@ class LogoTitle extends StatelessWidget {
       children: [
         Image.asset(
           'assets/images/logo.png',
-          width: 25.w,
+          width: 20.w,
           height: 25.w,
         ),
         SizedBox(width: 2.w),
