@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class ColoredCard extends StatelessWidget {
-  const ColoredCard({
+class SubjectCard extends StatelessWidget {
+  const SubjectCard({
     super.key,
     required this.color,
     required this.onTap,
