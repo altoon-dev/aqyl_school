@@ -32,7 +32,6 @@ class NavRouter extends StatelessWidget {
                 borderRadius: BorderRadius.circular(24),
             ),
             height: 70, // Set the desired height
-
             child: ClipRRect(
               borderRadius: BorderRadius.circular(24),
               child: BottomNavigationBar(

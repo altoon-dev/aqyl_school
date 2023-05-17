@@ -131,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     alignment: Alignment.bottomRight,
                     child: TextButton(
                       onPressed: () {
-                        context.router.push(const ForgetRoute());
+                        context.router.push(const ForgetPass());
                       },
                       child: Text(
                         'Забыл(а) пароль?',

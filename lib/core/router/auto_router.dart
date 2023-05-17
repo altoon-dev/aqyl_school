@@ -11,10 +11,11 @@ class AppRouter extends $AppRouter {
           initial: true,
         ),
         AutoRoute(page: RoleRoute.page),
+        AutoRoute(page: LessonRoute.page),
         AutoRoute(page: LoginRoute.page),
         AutoRoute(page: SignUpRoute.page),
         AutoRoute(page: CourseRoute.page),
-        AutoRoute(page: ForgetRoute.page),
+        AutoRoute(page: ForgetPass.page),
         AutoRoute(
           page: NavRouter.page,
           children: [

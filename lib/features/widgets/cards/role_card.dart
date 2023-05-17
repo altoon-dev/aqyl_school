@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class SubjectCard extends StatelessWidget {
-  const SubjectCard({
+class RoleCard extends StatelessWidget {
+  const RoleCard({
     super.key,
     required this.color,
     required this.onTap,
@@ -27,13 +27,7 @@ class SubjectCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(2.w),
           color: color,
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(width:80,height:80,child: Image.asset("assets/images/subject_icon.png",)),
-            child,
-          ],
-        ),
+        child: Center(child: child),
       ),
     );
   }

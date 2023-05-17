@@ -12,6 +12,8 @@ import 'package:aqyl_school/core/router/nav_router.dart' as _i7;
 import 'package:aqyl_school/features/chat/presentation/chat_screen.dart' as _i1;
 import 'package:aqyl_school/features/course/presentation/course_screen.dart'
     as _i6;
+import 'package:aqyl_school/features/course/presentation/lesson_screen.dart'
+    as _i11;
 import 'package:aqyl_school/features/home/presentation/home_screen.dart' as _i3;
 import 'package:aqyl_school/features/profile/presentation/profile_screen.dart'
     as _i5;
@@ -25,8 +27,7 @@ import 'package:aqyl_school/features/sign/presentation/sign_up_screen.dart'
 import 'package:aqyl_school/features/splash/presentation/splash_screen.dart'
     as _i2;
 import 'package:auto_route/auto_route.dart' as _i12;
-
-import '../../features/sign/presentation/forget_pass.dart' as _i11;
+import 'package:flutter/material.dart' as _i13;
 
 abstract class $AppRouter extends _i12.RootStackRouter {
   $AppRouter({super.navigatorKey});
@@ -51,6 +52,12 @@ abstract class $AppRouter extends _i12.RootStackRouter {
         child: const _i3.HomeScreen(),
       );
     },
+    ForgetPass.name: (routeData) {
+      return _i12.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i4.ForgetPass(),
+      );
+    },
     ProfileRoute.name: (routeData) {
       return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -58,9 +65,13 @@ abstract class $AppRouter extends _i12.RootStackRouter {
       );
     },
     CourseRoute.name: (routeData) {
+      final args = routeData.argsAs<CourseRouteArgs>();
       return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i6.CourseScreen(),
+        child: _i6.CourseScreen(
+          key: args.key,
+          course: args.course,
+        ),
       );
     },
     NavRouter.name: (routeData) {
@@ -87,10 +98,14 @@ abstract class $AppRouter extends _i12.RootStackRouter {
         child: const _i10.RoleScreen(),
       );
     },
-    ForgetRoute.name: (routeData) {
+    LessonRoute.name: (routeData) {
+      final args = routeData.argsAs<LessonRouteArgs>();
       return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i11.ForgetPass(),
+        child: _i11.LessonScreen(
+          key: args.key,
+          lesson: args.lesson,
+        ),
       );
     },
   };
@@ -139,8 +154,7 @@ class HomeRoute extends _i12.PageRouteInfo<void> {
 }
 
 /// generated route for
-
-/// [_i11.ForgetPass]
+/// [_i4.ForgetPass]
 class ForgetPass extends _i12.PageRouteInfo<void> {
   const ForgetPass({List<_i12.PageRouteInfo>? children})
       : super(
@@ -169,16 +183,40 @@ class ProfileRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.CourseScreen]
-class CourseRoute extends _i12.PageRouteInfo<void> {
-  const CourseRoute({List<_i12.PageRouteInfo>? children})
-      : super(
+class CourseRoute extends _i12.PageRouteInfo<CourseRouteArgs> {
+  CourseRoute({
+    _i13.Key? key,
+    required String course,
+    List<_i12.PageRouteInfo>? children,
+  }) : super(
           CourseRoute.name,
+          args: CourseRouteArgs(
+            key: key,
+            course: course,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'CourseRoute';
 
-  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
+  static const _i12.PageInfo<CourseRouteArgs> page =
+      _i12.PageInfo<CourseRouteArgs>(name);
+}
+
+class CourseRouteArgs {
+  const CourseRouteArgs({
+    this.key,
+    required this.course,
+  });
+
+  final _i13.Key? key;
+
+  final String course;
+
+  @override
+  String toString() {
+    return 'CourseRouteArgs{key: $key, course: $course}';
+  }
 }
 
 /// generated route for
@@ -222,19 +260,6 @@ class SignUpRoute extends _i12.PageRouteInfo<void> {
 
   static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
 }
-/// generated route for
-/// [_i11.ForgetPassScreen]
-class ForgetRoute extends _i12.PageRouteInfo<void> {
-  const ForgetRoute({List<_i12.PageRouteInfo>? children})
-      : super(
-    ForgetRoute.name,
-    initialChildren: children,
-  );
-
-  static const String name = 'ForgetRoute';
-
-  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
-}
 
 /// generated route for
 /// [_i10.RoleScreen]
@@ -248,4 +273,42 @@ class RoleRoute extends _i12.PageRouteInfo<void> {
   static const String name = 'RoleRoute';
 
   static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i11.LessonScreen]
+class LessonRoute extends _i12.PageRouteInfo<LessonRouteArgs> {
+  LessonRoute({
+    _i13.Key? key,
+    required String lesson,
+    List<_i12.PageRouteInfo>? children,
+  }) : super(
+          LessonRoute.name,
+          args: LessonRouteArgs(
+            key: key,
+            lesson: lesson,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'LessonRoute';
+
+  static const _i12.PageInfo<LessonRouteArgs> page =
+      _i12.PageInfo<LessonRouteArgs>(name);
+}
+
+class LessonRouteArgs {
+  const LessonRouteArgs({
+    this.key,
+    required this.lesson,
+  });
+
+  final _i13.Key? key;
+
+  final String lesson;
+
+  @override
+  String toString() {
+    return 'LessonRouteArgs{key: $key, lesson: $lesson}';
+  }
 }

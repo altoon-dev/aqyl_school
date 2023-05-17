@@ -112,8 +112,8 @@ class HomeScreen extends StatelessWidget {
                           (_) =>
                           SubjectCard(
                             color: const Color(0xFFC9E464),
-                            onTap: () => context.router.push(const CourseRoute()),
-                            child: const Text("Математика"),
+                            onTap: () => context.router.push( CourseRoute(course: "Математика")),
+                            child: const Text("Математика",style: TextStyle(fontWeight: FontWeight.bold),),
                           ),
                     ),
                   ),
