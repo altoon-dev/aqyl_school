@@ -1,6 +1,7 @@
 import 'package:aqyl_school/core/router/auto_router.gr.dart';
 import 'package:aqyl_school/features/role/application/role_manager_cubit.dart';
 import 'package:aqyl_school/features/role/domain/role.dart';
+import 'package:aqyl_school/features/widgets/cards/role_card.dart';
 import 'package:aqyl_school/features/widgets/cards/subject_card.dart';
 import 'package:aqyl_school/features/widgets/titles/welcome_text.dart';
 import 'package:auto_route/auto_route.dart';
@@ -36,7 +37,7 @@ class RoleScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SubjectCard(
+              RoleCard(
                 onTap: () {
                   setRoleAndNavigate(context, "student");
                 },
@@ -50,7 +51,7 @@ class RoleScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 2.5.h),
-              SubjectCard(
+              RoleCard(
                 onTap: () => setRoleAndNavigate(context, "teacher"),
                 color: Colors.red,
                 child: Text(
@@ -67,7 +68,7 @@ class RoleScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SubjectCard(
+              RoleCard(
                 onTap: () => setRoleAndNavigate(context, "parent"),
                 color: const Color(0xFF556FFD),
                 child: Text(

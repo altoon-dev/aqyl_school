@@ -1,3 +1,6 @@
+import 'package:aqyl_school/core/router/auto_router.gr.dart';
+import 'package:aqyl_school/features/course/presentation/report_screen.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -5,18 +8,18 @@ class ChildCard extends StatelessWidget {
   const ChildCard({
     super.key,
     required this.name, required this.group,
-    required this.onTap,
   });
   final String name;
   final String group;
-  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding:  EdgeInsets.symmetric(horizontal: 1.2.w,vertical: 1.5.w ),
       child: InkWell(
-        onTap: onTap,
+        onTap: (){
+          context.router.push(ReportRoute(report: "Математика"));
+        },
         highlightColor: Colors.grey.shade300,
         borderRadius: BorderRadius.circular(2.w),
         child: Material(

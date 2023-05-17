@@ -120,7 +120,7 @@ class HomeScreen extends StatelessWidget {
                 ]else if(state.role==Role.parent)...[
                   ListView.builder(  shrinkWrap: true,                  physics: const NeverScrollableScrollPhysics(),
                       itemCount:6,itemBuilder: (context,index){
-                       return ChildCard( onTap: (){}, name: "Имя Фамилия ${index+1}",group: "Группа",);
+                       return ChildCard( name: "Имя Фамилия ${index+1}",group: "Группа",);
                   })
                 ]else ...[
                   ListView.builder(  shrinkWrap: true,                  physics: const NeverScrollableScrollPhysics(),
