@@ -82,9 +82,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const LogoTitle(),
-                SizedBox(height: 2.h),
+                SizedBox(height: 1.h),
                 const WelcomeText(),
-                SizedBox(height: 5.h),
+                SizedBox(height: 1.h),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
@@ -98,7 +98,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 1.h),
+                SizedBox(height: 0.5.h),
                 Form(
                   key: _formKey,
                   child: Padding(
@@ -127,12 +127,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 : null;
                           },
                         ),
+                        InputField(
+                          label: "last name",
+                        ),
+                        InputField(
+                          label: "first name",
+                        ),
                       ],
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 3.h,
+                  height: 1.9.h,
                 ),
                 DefaultButton(
                   onPressed: () {_createAccountWithEmailAndPassword(context);},
@@ -143,7 +149,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 2.h),
+                //SizedBox(height: 1.h),
                 Container(
                   width: 100.w,
                   alignment: Alignment.bottomCenter,
@@ -164,7 +170,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 1.h,),
+               // SizedBox(height: 1.h,),
                 GoogleButton(onPressed: () {_authenticateWithGoogle(context);}, ),
               ],
             );

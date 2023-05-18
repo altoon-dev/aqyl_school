@@ -7,9 +7,9 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-
 import '../../widgets/titles/logo_title.dart';
 import '../../widgets/utils/utils.dart';
+
 
 @RoutePage()
 class ForgetPass extends StatefulWidget {
