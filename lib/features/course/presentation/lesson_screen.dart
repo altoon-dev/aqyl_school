@@ -1,9 +1,12 @@
 import 'package:aqyl_school/constants/text_constants.dart';
+import 'package:aqyl_school/features/role/application/role_manager_cubit.dart';
+import 'package:aqyl_school/features/role/domain/role.dart';
 import 'package:aqyl_school/features/widgets/buttons/default_button.dart';
 import 'package:aqyl_school/features/widgets/cards/lesson_card.dart';
 import 'package:aqyl_school/features/widgets/core/custom_scaffold.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
 class LessonScreen extends StatefulWidget {
@@ -50,7 +53,10 @@ class _LessonScreenState extends State<LessonScreen> {
                     ),
               ),
               SizedBox(height: 16,),
-              Center(
+              BlocBuilder<RoleManagerCubit, RoleManagerState>(
+  builder: (context, state) {
+    final bool isTeacher=state.role==Role.teacher;
+    return isTeacher&&isHomework? SizedBox():Center(
                 child: DefaultButton(
                   onPressed: () {
                     if(isHomework){
@@ -74,7 +80,9 @@ class _LessonScreenState extends State<LessonScreen> {
                     ),
                   ),
                 ),
-              ),
+              );
+  },
+),
               SizedBox(height: 24,),
 
             ],),

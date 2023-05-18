@@ -125,7 +125,7 @@ class HomeScreen extends StatelessWidget {
                 ]else ...[
                   ListView.builder(  shrinkWrap: true,                  physics: const NeverScrollableScrollPhysics(),
                       itemCount:6,itemBuilder: (context,index){
-                        return GroupCard( onTap: (){}, group: "Группа №${index+1}");
+                        return GroupCard( group: "Группа №${index+1}");
                       })
                 ]
 

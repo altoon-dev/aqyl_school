@@ -1,3 +1,5 @@
+import 'package:aqyl_school/core/router/auto_router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -5,17 +7,17 @@ class GroupCard extends StatelessWidget {
   const GroupCard({
     super.key,
     required this.group,
-    required this.onTap,
   });
   final String group;
-  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding:  EdgeInsets.symmetric(horizontal: 1.2.w,vertical: 1.5.w ),
       child: InkWell(
-        onTap: onTap,
+        onTap: (){
+          context.router.push(GroupRoute(group: group));
+        },
         highlightColor: Colors.grey.shade300,
         borderRadius: BorderRadius.circular(2.w),
         child: Material(

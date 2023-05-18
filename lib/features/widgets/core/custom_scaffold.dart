@@ -30,24 +30,26 @@ class CustomScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer:  drawer,
-      appBar: useAppBar
-          ? CustomAppBar(
-        hasBackButton: hasBackButton,
-        titleName: appBarTitle,
-            )
-          : null,
-      body: Padding(
-        padding: padding ?? const EdgeInsets.symmetric(horizontal: 16),
-        child: isScrolling
-            ? SingleChildScrollView(
-                child: body,
+    return SafeArea(
+      child: Scaffold(
+        drawer:  drawer,
+        appBar: useAppBar
+            ? CustomAppBar(
+          hasBackButton: hasBackButton,
+          titleName: appBarTitle,
               )
-            : body,
+            : null,
+        body: Padding(
+          padding: padding ?? const EdgeInsets.symmetric(horizontal: 16),
+          child: isScrolling
+              ? SingleChildScrollView(
+                  child: body,
+                )
+              : body,
+        ),
+        bottomNavigationBar: bottomNavigationBar,
+        floatingActionButton: floatingActionButton,
       ),
-      bottomNavigationBar: bottomNavigationBar,
-      floatingActionButton: floatingActionButton,
     );
   }
 }
