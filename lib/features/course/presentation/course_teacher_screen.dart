@@ -13,6 +13,7 @@ class CourseTeacherScreen extends StatelessWidget {
       child: CustomScaffold(
           useAppBar: true,
           hasBackButton: true,
+          isScrolling: true,
           appBarTitle: course,
           body: ListView.builder(
               shrinkWrap: true,

@@ -31,7 +31,9 @@ class ChatCard extends StatelessWidget {
           ],
         ),
         DefaultButton(
-          child: const Text('написать'),
+
+          style: ElevatedButton.styleFrom(elevation:0,backgroundColor: Color(0xffEDEEF0)),
+          child: const Text('написать',style: TextStyle(color: Colors.black),),
           onPressed: () {},
         ),
       ],
