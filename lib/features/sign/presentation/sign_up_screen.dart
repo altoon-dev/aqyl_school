@@ -129,9 +129,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         InputField(
                           label: "last name",
+                            validator: (value) {
+                              return value != null && value.length < 3
+                                  ? "Enter min. 3 characters"
+                                  : null;
+                            }
                         ),
                         InputField(
                           label: "first name",
+                          validator: (value){
+                            return value != null && value.length < 3
+                                ? "Enter min. 3 characters"
+                                : null;
+
+                          }
                         ),
                       ],
                     ),

@@ -167,7 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           style: TextStyle( fontSize: 0.25.dp,
                             color: Colors.black,
                             fontWeight: FontWeight.bold,),
-                          children: <TextSpan>[
+                          children: [
                             TextSpan(text: ' Зарегестрироваться!', style: TextStyle( fontSize: 0.25.dp,
                               fontWeight: FontWeight.bold, color: Colors.blue),
                             ),

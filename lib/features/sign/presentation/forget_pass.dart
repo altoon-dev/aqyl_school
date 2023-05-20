@@ -81,7 +81,7 @@ class _ForgetPassState extends State<ForgetPass> {
             SizedBox(height: 2.5.h),
             DefaultButton(
               onPressed: resetPassword,
-              child: const Text("Восстановить"),
+              child:  Text("Восстановить"),
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0),
