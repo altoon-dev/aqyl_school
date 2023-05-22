@@ -8,6 +8,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../sign/bloc/auth_bloc.dart';
 import '../../sign/bloc/auth_event.dart';
@@ -65,145 +66,81 @@ class ProfileScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                      () {
-                                        late final status;
-                                        if(user.role==Role.student.name){
-                                          status="Студент";
-                                        }
-                                        else if(user.role==Role.parent.name){
-                                          status="Родитель";
-                                        }else{
-                                          status="Учитель";
-                                        }
-                                    return "Статус: $status";
-                                  }(),
+                                  "Номер телефона:  8-700-387-21-95",
                                   style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold),
+                                    fontSize: 0.28.dp,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                                 SizedBox(
-                                  height: 8,
+                                  height: 20,
                                 ),
                                 Text(
-                                  "Номер телефона:",
+                                  "Адрес:  Kabanbay batyr 47/1",
                                   style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold),
+                                    fontSize: 0.28.dp,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                                 SizedBox(
-                                  height: 8,
-                                ),
-                                Text(
-                                  "Адрес:",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(
-                                  height: 8,
+                                  height: 20,
                                 ),
                                 Text(
                                   "Email: ${FirebaseAuth.instance.currentUser?.email??""}",
                                   style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold),
+                                    fontSize: 0.28.dp,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                                 if (user.role == Role.student.name) ...[
                                   SizedBox(
-                                    height: 8,
+                                    height: 20,
                                   ),
                                   Text(
-                                    "Возраст:",
+                                    "Возраст:  20",
                                     style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
+                                      fontSize: 0.28.dp,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                   SizedBox(
-                                    height: 8,
+                                    height: 20,
                                   ),
                                   Text(
-                                    "Группа:",
+                                    "Группа:  SE-2015",
                                     style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
+                                      fontSize: 0.28.dp,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ] else
                                   if (user.role == Role.parent.name) ...[
                                     SizedBox(
-                                      height: 8,
+                                      height: 20,
                                     ),
                                     Text(
-                                      "Дочь/Сын:",
+                                      "Дочь/Сын:  Alibi",
                                       style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold),
+                                        fontSize: 0.28.dp,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ] else
                                     ...[
                                       SizedBox(
-                                        height: 8,
+                                        height: 20,
                                       ),
                                       Text(
-                                        "Прикрепленные группы:",
+                                        "Прикрепленные группы:  SE-2015",
                                         style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold),
+                                          fontSize: 0.28.dp,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ]
                               ],
                             )
                         ),
-                        Center(
-                          child: DefaultButton(
-                              child: Text('выйти с акккаунта'),
-                              onPressed: () {
-                                context.read<AuthBloc>().add(
-                                    SignOutRequested());
-                              }),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    final role = getRoleFromString("student");
-                                    context.read<RoleManagerCubit>().setRole(
-                                        role);
-                                  },
-                                  child: Text("Student"),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 8,
-                              ),
-                              Expanded(
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    final role = getRoleFromString("parent");
-                                    context.read<RoleManagerCubit>().setRole(
-                                        role);
-                                  },
-                                  child: Text("Parent"),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 8,
-                              ),
-                              Expanded(
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    final role = getRoleFromString("teacher");
-                                    context.read<RoleManagerCubit>().setRole(
-                                        role);
-                                  },
-                                  child: Text("Teacher"),
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
                       ],
                     );
                   },
