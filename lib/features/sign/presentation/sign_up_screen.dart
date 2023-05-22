@@ -58,12 +58,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is Authenticated) {
-            // Navigating to the dashboard screen if the user is authenticated
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
-                builder: (context) => const HomeScreen(),
-              ),
-            );
+            context.router.replace(const HomeRoute());
           }
           if (state is AuthError) {
             // Displaying the error message if the user is not authenticated
@@ -197,7 +192,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
       BlocProvider.of<AuthBloc>(context).add(
         SignUpRequested(
           _emailController.text,
-          _passwordController.text,
+          _passwordController.text
+
         ),
       );
     }

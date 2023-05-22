@@ -1,3 +1,6 @@
+import 'package:aqyl_school/features/role/infrastructure/role_repository.dart';
+import 'package:aqyl_school/features/sign/domain/user_dto.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -10,12 +13,19 @@ class AuthRepository{
     return     optionOf(_firebaseAuth.currentUser?.uid);
   }
   Future<void> signUp({
+    required String firstname,
+    required String lastname,
     required String email,
     required String password
   }) async {
     try {
-      await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
+      final firebaseFirestore= FirebaseFirestore.instance;
+      final role=await RoleRepository().getRole();
+      String? userId=(await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password)).user?.uid;
+      await firebaseFirestore.collection("users").doc(userId).set(
+          UserDto(firstName: firstname,lastName: lastname, email: email, role: role.name).toJson()
+      );
       print("successFullSignUp");
     } on FirebaseAuthException catch (e) {
       print(e);

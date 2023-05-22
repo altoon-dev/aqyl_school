@@ -8,20 +8,20 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:aqyl_school/core/router/nav_router.dart' as _i12;
+import 'package:aqyl_school/core/router/nav_router.dart' as _i15;
 import 'package:aqyl_school/features/chat/presentation/chat_screen.dart' as _i2;
 import 'package:aqyl_school/features/course/presentation/course_screen.dart'
-    as _i10;
-import 'package:aqyl_school/features/course/presentation/course_teacher_screen.dart'
-    as _i14;
-import 'package:aqyl_school/features/course/presentation/group_screen.dart'
     as _i13;
-import 'package:aqyl_school/features/course/presentation/lesson_screen.dart'
-    as _i11;
-import 'package:aqyl_school/features/course/presentation/report_screen.dart'
+import 'package:aqyl_school/features/course/presentation/course_teacher_screen.dart'
     as _i9;
+import 'package:aqyl_school/features/course/presentation/group_screen.dart'
+    as _i12;
+import 'package:aqyl_school/features/course/presentation/lesson_screen.dart'
+    as _i14;
+import 'package:aqyl_school/features/course/presentation/report_screen.dart'
+    as _i11;
 import 'package:aqyl_school/features/course/presentation/report_teacher_screen.dart'
-    as _i15;
+    as _i10;
 import 'package:aqyl_school/features/home/presentation/home_screen.dart' as _i4;
 import 'package:aqyl_school/features/profile/presentation/profile_screen.dart'
     as _i8;
@@ -90,57 +90,11 @@ abstract class $AppRouter extends _i16.RootStackRouter {
         child: const _i8.ProfileScreen(),
       );
     },
-    ReportRoute.name: (routeData) {
-      final args = routeData.argsAs<ReportRouteArgs>();
-      return _i16.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i9.ReportScreen(
-          key: args.key,
-          report: args.report,
-        ),
-      );
-    },
-    CourseRoute.name: (routeData) {
-      final args = routeData.argsAs<CourseRouteArgs>();
-      return _i16.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i10.CourseScreen(
-          key: args.key,
-          course: args.course,
-        ),
-      );
-    },
-    LessonRoute.name: (routeData) {
-      final args = routeData.argsAs<LessonRouteArgs>();
-      return _i16.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i11.LessonScreen(
-          key: args.key,
-          lesson: args.lesson,
-        ),
-      );
-    },
-    NavRouter.name: (routeData) {
-      return _i16.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i12.NavRouter(),
-      );
-    },
-    GroupRoute.name: (routeData) {
-      final args = routeData.argsAs<GroupRouteArgs>();
-      return _i16.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i13.GroupScreen(
-          key: args.key,
-          group: args.group,
-        ),
-      );
-    },
     CourseTeacherRoute.name: (routeData) {
       final args = routeData.argsAs<CourseTeacherRouteArgs>();
       return _i16.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i14.CourseTeacherScreen(
+        child: _i9.CourseTeacherScreen(
           key: args.key,
           course: args.course,
         ),
@@ -150,10 +104,56 @@ abstract class $AppRouter extends _i16.RootStackRouter {
       final args = routeData.argsAs<ReportTeacherRouteArgs>();
       return _i16.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i15.ReportTeacherScreen(
+        child: _i10.ReportTeacherScreen(
           key: args.key,
           lesson: args.lesson,
         ),
+      );
+    },
+    ReportRoute.name: (routeData) {
+      final args = routeData.argsAs<ReportRouteArgs>();
+      return _i16.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i11.ReportScreen(
+          key: args.key,
+          report: args.report,
+        ),
+      );
+    },
+    GroupRoute.name: (routeData) {
+      final args = routeData.argsAs<GroupRouteArgs>();
+      return _i16.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i12.GroupScreen(
+          key: args.key,
+          group: args.group,
+        ),
+      );
+    },
+    CourseRoute.name: (routeData) {
+      final args = routeData.argsAs<CourseRouteArgs>();
+      return _i16.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i13.CourseScreen(
+          key: args.key,
+          course: args.course,
+        ),
+      );
+    },
+    LessonRoute.name: (routeData) {
+      final args = routeData.argsAs<LessonRouteArgs>();
+      return _i16.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i14.LessonScreen(
+          key: args.key,
+          lesson: args.lesson,
+        ),
+      );
+    },
+    NavRouter.name: (routeData) {
+      return _i16.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i15.NavRouter(),
       );
     },
   };
@@ -272,173 +272,7 @@ class ProfileRoute extends _i16.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i9.ReportScreen]
-class ReportRoute extends _i16.PageRouteInfo<ReportRouteArgs> {
-  ReportRoute({
-    _i17.Key? key,
-    required String report,
-    List<_i16.PageRouteInfo>? children,
-  }) : super(
-          ReportRoute.name,
-          args: ReportRouteArgs(
-            key: key,
-            report: report,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'ReportRoute';
-
-  static const _i16.PageInfo<ReportRouteArgs> page =
-      _i16.PageInfo<ReportRouteArgs>(name);
-}
-
-class ReportRouteArgs {
-  const ReportRouteArgs({
-    this.key,
-    required this.report,
-  });
-
-  final _i17.Key? key;
-
-  final String report;
-
-  @override
-  String toString() {
-    return 'ReportRouteArgs{key: $key, report: $report}';
-  }
-}
-
-/// generated route for
-/// [_i10.CourseScreen]
-class CourseRoute extends _i16.PageRouteInfo<CourseRouteArgs> {
-  CourseRoute({
-    _i17.Key? key,
-    required String course,
-    List<_i16.PageRouteInfo>? children,
-  }) : super(
-          CourseRoute.name,
-          args: CourseRouteArgs(
-            key: key,
-            course: course,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'CourseRoute';
-
-  static const _i16.PageInfo<CourseRouteArgs> page =
-      _i16.PageInfo<CourseRouteArgs>(name);
-}
-
-class CourseRouteArgs {
-  const CourseRouteArgs({
-    this.key,
-    required this.course,
-  });
-
-  final _i17.Key? key;
-
-  final String course;
-
-  @override
-  String toString() {
-    return 'CourseRouteArgs{key: $key, course: $course}';
-  }
-}
-
-/// generated route for
-/// [_i11.LessonScreen]
-class LessonRoute extends _i16.PageRouteInfo<LessonRouteArgs> {
-  LessonRoute({
-    _i17.Key? key,
-    required String lesson,
-    List<_i16.PageRouteInfo>? children,
-  }) : super(
-          LessonRoute.name,
-          args: LessonRouteArgs(
-            key: key,
-            lesson: lesson,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'LessonRoute';
-
-  static const _i16.PageInfo<LessonRouteArgs> page =
-      _i16.PageInfo<LessonRouteArgs>(name);
-}
-
-class LessonRouteArgs {
-  const LessonRouteArgs({
-    this.key,
-    required this.lesson,
-  });
-
-  final _i17.Key? key;
-
-  final String lesson;
-
-  @override
-  String toString() {
-    return 'LessonRouteArgs{key: $key, lesson: $lesson}';
-  }
-}
-
-/// generated route for
-/// [_i12.NavRouter]
-class NavRouter extends _i16.PageRouteInfo<void> {
-  const NavRouter({List<_i16.PageRouteInfo>? children})
-      : super(
-          NavRouter.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'NavRouter';
-
-  static const _i16.PageInfo<void> page = _i16.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i13.GroupScreen]
-class GroupRoute extends _i16.PageRouteInfo<GroupRouteArgs> {
-  GroupRoute({
-    _i18.Key? key,
-    required String group,
-    List<_i16.PageRouteInfo>? children,
-  }) : super(
-          GroupRoute.name,
-          args: GroupRouteArgs(
-            key: key,
-            group: group,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'GroupRoute';
-
-  static const _i16.PageInfo<GroupRouteArgs> page =
-      _i16.PageInfo<GroupRouteArgs>(name);
-}
-
-class GroupRouteArgs {
-  const GroupRouteArgs({
-    this.key,
-    required this.group,
-  });
-
-  final _i18.Key? key;
-
-  final String group;
-
-  @override
-  String toString() {
-    return 'GroupRouteArgs{key: $key, group: $group}';
-  }
-}
-
-/// generated route for
-/// [_i14.CourseTeacherScreen]
+/// [_i9.CourseTeacherScreen]
 class CourseTeacherRoute extends _i16.PageRouteInfo<CourseTeacherRouteArgs> {
   CourseTeacherRoute({
     _i17.Key? key,
@@ -476,7 +310,7 @@ class CourseTeacherRouteArgs {
 }
 
 /// generated route for
-/// [_i15.ReportTeacherScreen]
+/// [_i10.ReportTeacherScreen]
 class ReportTeacherRoute extends _i16.PageRouteInfo<ReportTeacherRouteArgs> {
   ReportTeacherRoute({
     _i17.Key? key,
@@ -511,4 +345,170 @@ class ReportTeacherRouteArgs {
   String toString() {
     return 'ReportTeacherRouteArgs{key: $key, lesson: $lesson}';
   }
+}
+
+/// generated route for
+/// [_i11.ReportScreen]
+class ReportRoute extends _i16.PageRouteInfo<ReportRouteArgs> {
+  ReportRoute({
+    _i17.Key? key,
+    required String report,
+    List<_i16.PageRouteInfo>? children,
+  }) : super(
+          ReportRoute.name,
+          args: ReportRouteArgs(
+            key: key,
+            report: report,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ReportRoute';
+
+  static const _i16.PageInfo<ReportRouteArgs> page =
+      _i16.PageInfo<ReportRouteArgs>(name);
+}
+
+class ReportRouteArgs {
+  const ReportRouteArgs({
+    this.key,
+    required this.report,
+  });
+
+  final _i17.Key? key;
+
+  final String report;
+
+  @override
+  String toString() {
+    return 'ReportRouteArgs{key: $key, report: $report}';
+  }
+}
+
+/// generated route for
+/// [_i12.GroupScreen]
+class GroupRoute extends _i16.PageRouteInfo<GroupRouteArgs> {
+  GroupRoute({
+    _i18.Key? key,
+    required String group,
+    List<_i16.PageRouteInfo>? children,
+  }) : super(
+          GroupRoute.name,
+          args: GroupRouteArgs(
+            key: key,
+            group: group,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'GroupRoute';
+
+  static const _i16.PageInfo<GroupRouteArgs> page =
+      _i16.PageInfo<GroupRouteArgs>(name);
+}
+
+class GroupRouteArgs {
+  const GroupRouteArgs({
+    this.key,
+    required this.group,
+  });
+
+  final _i18.Key? key;
+
+  final String group;
+
+  @override
+  String toString() {
+    return 'GroupRouteArgs{key: $key, group: $group}';
+  }
+}
+
+/// generated route for
+/// [_i13.CourseScreen]
+class CourseRoute extends _i16.PageRouteInfo<CourseRouteArgs> {
+  CourseRoute({
+    _i17.Key? key,
+    required String course,
+    List<_i16.PageRouteInfo>? children,
+  }) : super(
+          CourseRoute.name,
+          args: CourseRouteArgs(
+            key: key,
+            course: course,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'CourseRoute';
+
+  static const _i16.PageInfo<CourseRouteArgs> page =
+      _i16.PageInfo<CourseRouteArgs>(name);
+}
+
+class CourseRouteArgs {
+  const CourseRouteArgs({
+    this.key,
+    required this.course,
+  });
+
+  final _i17.Key? key;
+
+  final String course;
+
+  @override
+  String toString() {
+    return 'CourseRouteArgs{key: $key, course: $course}';
+  }
+}
+
+/// generated route for
+/// [_i14.LessonScreen]
+class LessonRoute extends _i16.PageRouteInfo<LessonRouteArgs> {
+  LessonRoute({
+    _i17.Key? key,
+    required String lesson,
+    List<_i16.PageRouteInfo>? children,
+  }) : super(
+          LessonRoute.name,
+          args: LessonRouteArgs(
+            key: key,
+            lesson: lesson,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'LessonRoute';
+
+  static const _i16.PageInfo<LessonRouteArgs> page =
+      _i16.PageInfo<LessonRouteArgs>(name);
+}
+
+class LessonRouteArgs {
+  const LessonRouteArgs({
+    this.key,
+    required this.lesson,
+  });
+
+  final _i17.Key? key;
+
+  final String lesson;
+
+  @override
+  String toString() {
+    return 'LessonRouteArgs{key: $key, lesson: $lesson}';
+  }
+}
+
+/// generated route for
+/// [_i15.NavRouter]
+class NavRouter extends _i16.PageRouteInfo<void> {
+  const NavRouter({List<_i16.PageRouteInfo>? children})
+      : super(
+          NavRouter.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'NavRouter';
+
+  static const _i16.PageInfo<void> page = _i16.PageInfo<void>(name);
 }
