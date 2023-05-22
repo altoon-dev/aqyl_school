@@ -8,6 +8,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({required this.authRepository}) : super(UnAuthenticated()) {
     on<AuthCheckRequested>((event, emit) async {
       emit(Loading());
+        print(authRepository.getSignedInUserId());
         authRepository.getSignedInUserId().fold(() => emit(UnAuthenticated()), (_) => emit(Authenticated()));
     });
     on<SignInRequested>((event, emit) async {

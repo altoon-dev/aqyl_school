@@ -28,6 +28,8 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
+  final _firstnameController = TextEditingController();
+  final _lastnameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   late FocusNode _emailNode;
@@ -58,7 +60,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is Authenticated) {
-            context.router.replace(const HomeRoute());
+            context.replaceRoute(HomeRoute());
+            // Navigating to the dashboard screen if the user is authenticated
           }
           if (state is AuthError) {
             // Displaying the error message if the user is not authenticated
@@ -123,6 +126,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           },
                         ),
                         InputField(
+                            controller: _firstnameController,
+                            label: "first name",
+                            validator: (value){
+                              return value != null && value.length < 3
+                                  ? "Enter min. 3 characters"
+                                  : null;
+
+                            }
+                        ),
+                        InputField(
+                          controller: _lastnameController,
                           label: "last name",
                             validator: (value) {
                               return value != null && value.length < 3
@@ -130,15 +144,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   : null;
                             }
                         ),
-                        InputField(
-                          label: "first name",
-                          validator: (value){
-                            return value != null && value.length < 3
-                                ? "Enter min. 3 characters"
-                                : null;
 
-                          }
-                        ),
                       ],
                     ),
                   ),
@@ -192,8 +198,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
       BlocProvider.of<AuthBloc>(context).add(
         SignUpRequested(
           _emailController.text,
-          _passwordController.text
-
+          _passwordController.text,
+          _firstnameController.text,
+          _lastnameController.text,
         ),
       );
     }

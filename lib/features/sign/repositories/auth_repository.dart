@@ -26,13 +26,16 @@ class AuthRepository{
       await firebaseFirestore.collection("users").doc(userId).set(
           UserDto(firstName: firstname,lastName: lastname, email: email, role: role.name).toJson()
       );
-      print("successFullSignUp");
     } on FirebaseAuthException catch (e) {
       print(e);
       if (e.code == 'weak-password') {
         throw Exception('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
+        print("email already in use");
         throw Exception('The account already exists for that email.');
+
+      }else{
+        throw Exception(e.message);
       }
     } catch (e) {
       throw Exception(e.toString());
