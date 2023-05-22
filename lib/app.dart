@@ -1,4 +1,5 @@
 import 'package:aqyl_school/core/router/auto_router.dart';
+import 'package:aqyl_school/features/profile/application/profile_watcher_cubit.dart';
 import 'package:aqyl_school/features/role/application/role_manager_cubit.dart';
 import 'package:aqyl_school/features/sign/bloc/auth_bloc.dart';
 import 'package:aqyl_school/features/sign/bloc/auth_state.dart';
@@ -29,6 +30,7 @@ class App extends StatelessWidget {
           BlocProvider(
             create: (context) => RoleManagerCubit()..getRole(),
           ),
+
         ],
         child: ResponsiveSizer(
           builder: (context, orientation, screenType) {

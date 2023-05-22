@@ -10,11 +10,4 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(App());
-  print("problema");
-  print(FirebaseAuth.instance.currentUser?.uid??"uid");
-  // final result=await FirebaseFirestore.instance
-  //     .collection("users")
-  //     .doc(FirebaseAuth.instance.currentUser!.uid)
-  //     .get();
-  // print(result.data());
 }

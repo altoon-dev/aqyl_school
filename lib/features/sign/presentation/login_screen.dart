@@ -1,5 +1,6 @@
 import 'package:aqyl_school/constants/color_constants.dart';
 import 'package:aqyl_school/features/home/presentation/home_screen.dart';
+import 'package:aqyl_school/features/role/application/role_manager_cubit.dart';
 import 'package:aqyl_school/features/sign/bloc/auth_event.dart';
 import 'package:aqyl_school/features/sign/presentation/sign_up_screen.dart';
 import 'package:aqyl_school/features/widgets/buttons/google_button.dart';
@@ -55,6 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
         listener: (context, state) {
           if (state is Authenticated) {
             // Navigating to the dashboard screen if the user is authenticated
+            context.read<RoleManagerCubit>().getRole();
             context.router.replace(const HomeRoute());
           }
           if (state is AuthError) {
