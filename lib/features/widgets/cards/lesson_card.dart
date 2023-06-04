@@ -1,4 +1,5 @@
 import 'package:aqyl_school/core/router/auto_router.gr.dart';
+import 'package:aqyl_school/features/home/domain/course.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -6,27 +7,20 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 class LessonCard extends StatelessWidget {
   const LessonCard({
     super.key,
-    required this.lesson, required this.course,
+    required this.lessonIndex, required this.course,
   });
-  final String course;
-  final String lesson;
+  final Course course;
+  final int lessonIndex;
 
   @override
   Widget build(BuildContext context) {
     late final Color color;
-    if(lesson.contains("1")||lesson.contains("2")){
       color= Color(0xffCDFEC5);
-    }
-    else if(lesson.contains("3")||lesson.contains("4")){
-      color= Color(0xffFEE9C5);
-    }else{
-      color= Color(0xffF9AAAA);
-    }
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 1.2.w, vertical: 1.5.w),
       child: InkWell(
         onTap: (){
-          context.router.push(LessonRoute(lesson: "$course - $lesson"));
+          context.router.push(LessonRoute(lesson:course.lessons[lessonIndex-1],index: lessonIndex));
         },
         highlightColor: Colors.grey.shade300,
         borderRadius: BorderRadius.circular(2.w),
@@ -54,27 +48,29 @@ class LessonCard extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: 8),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        lesson,
-                        style: TextStyle(
-                            color: Color(0xff004A61),
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        "--Тема урока--",
-                        style: TextStyle(
-                            color: Color(0xff14CBD9),
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Урок $lessonIndex",
+                          style: TextStyle(
+                              color: Color(0xff004A61),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          course.lessons[lessonIndex-1].lessonName,overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          style: TextStyle(
+                              color: Color(0xff14CBD9),
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
                   ),
-                  Expanded(child: SizedBox()),
                   CircleAvatar(radius:16,backgroundColor:color)
                 ],
               ),

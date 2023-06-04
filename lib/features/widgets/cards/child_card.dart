@@ -18,7 +18,7 @@ class ChildCard extends StatelessWidget {
       padding:  EdgeInsets.symmetric(horizontal: 1.2.w,vertical: 1.5.w ),
       child: InkWell(
         onTap: (){
-          context.router.push(ReportRoute(report: "Математика"));
+          context.router.push(ReportRoute(childIndex: 0));
         },
         highlightColor: Colors.grey.shade300,
         borderRadius: BorderRadius.circular(2.w),

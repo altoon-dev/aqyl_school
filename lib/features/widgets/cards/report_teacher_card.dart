@@ -1,4 +1,6 @@
 import 'package:aqyl_school/core/router/auto_router.gr.dart';
+import 'package:aqyl_school/features/home/domain/course.dart';
+import 'package:aqyl_school/features/home/domain/lesson.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,11 +9,11 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 class ReportTeacherCard extends StatefulWidget {
   const ReportTeacherCard({
     super.key,
-    required this.lesson, required this.course,
+    required this.lesson, required this.course, required this.index,
   });
-  final String course;
-  final String lesson;
-
+  final Course course;
+  final Lesson lesson;
+  final int index;
   @override
   State<ReportTeacherCard> createState() => _ReportTeacherCardState();
 }
@@ -62,7 +64,7 @@ class _ReportTeacherCardState extends State<ReportTeacherCard> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            widget.lesson,
+                            "Урок ${widget.index}",
                             style: TextStyle(
                                 color: isCollapsed?Color(0xff004A61):Color(0xff161C2B),
                                 fontSize: 16,
@@ -71,7 +73,7 @@ class _ReportTeacherCardState extends State<ReportTeacherCard> {
                           Visibility(
                             visible: isCollapsed,
                             child: Text(
-                              "--Тема урока--",
+                            widget.lesson.lessonName,
                               style: TextStyle(
                                   color: Color(0xff14CBD9),
                                   fontSize: 12,
@@ -92,7 +94,7 @@ class _ReportTeacherCardState extends State<ReportTeacherCard> {
                         children: [
                           GestureDetector(
                             onTap:(){
-                              context.router.push(ReportTeacherRoute(lesson: "${widget.course} - ${widget.lesson}"));
+                              context.router.push(ReportTeacherRoute(course: widget.course,lessonIndex: widget.index));
                             },
                             child : Text(
                               "Написать отчет по уроку",
@@ -109,7 +111,7 @@ class _ReportTeacherCardState extends State<ReportTeacherCard> {
                           SizedBox(height: 8,),
                           GestureDetector(
                             onTap: (){
-                              context.router.push(LessonRoute(lesson: "${widget.course} - ${widget.lesson}"));
+                              context.router.push(LessonRoute(lesson:widget.lesson, index: widget.index));
                             },
                             child: Text(
                               "Просмотреть материалы",

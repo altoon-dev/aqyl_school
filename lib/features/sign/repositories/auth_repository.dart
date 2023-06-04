@@ -39,7 +39,7 @@ class AuthRepository{
       String? userId=(await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password)).user?.uid;
       await firebaseFirestore.collection("users").doc(userId).set(
-          UserDto(firstName: firstname,lastName: lastname, email: email, role: role.name).toJson()
+          UserDto(firstName: firstname,lastName: lastname, email: email, role: role.name, children: null).toJson()
       );
     } on FirebaseAuthException catch (e) {
       print(e);

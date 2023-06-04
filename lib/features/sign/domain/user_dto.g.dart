@@ -11,6 +11,10 @@ _$_UserDto _$$_UserDtoFromJson(Map<String, dynamic> json) => _$_UserDto(
       lastName: json['lastName'] as String,
       email: json['email'] as String,
       role: json['role'] as String,
+      children: (json['children'] as List<dynamic>?)
+          ?.map((e) => const DocumentReferenceConverter()
+              .fromJson(e as DocumentReference<Object?>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_UserDtoToJson(_$_UserDto instance) =>
@@ -19,4 +23,7 @@ Map<String, dynamic> _$$_UserDtoToJson(_$_UserDto instance) =>
       'lastName': instance.lastName,
       'email': instance.email,
       'role': instance.role,
+      'children': instance.children
+          ?.map(const DocumentReferenceConverter().toJson)
+          .toList(),
     };

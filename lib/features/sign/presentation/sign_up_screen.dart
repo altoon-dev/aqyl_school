@@ -1,4 +1,6 @@
 import 'package:aqyl_school/features/home/presentation/home_screen.dart';
+import 'package:aqyl_school/features/role/application/role_manager_cubit.dart';
+import 'package:aqyl_school/features/role/domain/role.dart';
 import 'package:aqyl_school/features/sign/presentation/login_screen.dart';
 import 'package:aqyl_school/features/widgets/titles/logo_title.dart';
 import 'package:auto_route/auto_route.dart';
@@ -58,8 +60,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocConsumer<AuthBloc, AuthState>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state is Authenticated) {
+             final role=context.read<RoleManagerCubit>().state.role;
+             if(role==Role.student){
+
+             }
             context.replaceRoute(HomeRoute());
             // Navigating to the dashboard screen if the user is authenticated
           }

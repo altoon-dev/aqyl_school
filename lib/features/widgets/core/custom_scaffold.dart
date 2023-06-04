@@ -36,6 +36,7 @@ class CustomScaffold extends StatelessWidget {
         appBar: useAppBar
             ? CustomAppBar(
           hasBackButton: hasBackButton,
+          actions: actions,
           titleName: appBarTitle,
               )
             : null,

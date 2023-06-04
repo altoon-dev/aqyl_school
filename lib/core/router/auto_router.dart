@@ -12,6 +12,7 @@ class AppRouter extends $AppRouter {
           initial: true,
         ),
         AutoRoute(page: RoleRoute.page),
+        AutoRoute(page: LessonCreationRoute.page),
         AutoRoute(page: ReportRoute.page),
         AutoRoute(page: GroupRoute.page),
         AutoRoute(page: LessonRoute.page),

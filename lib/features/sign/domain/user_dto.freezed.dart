@@ -24,6 +24,13 @@ mixin _$UserDto {
   String get lastName => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get role => throw _privateConstructorUsedError;
+  @DocumentReferenceConverter()
+  List<DocumentReference<Object?>>? get children =>
+      throw _privateConstructorUsedError;
+  @DocumentReferenceConverter()
+  @JsonKey(ignore: true)
+  DocumentReference<Object?>? get reference =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +42,16 @@ abstract class $UserDtoCopyWith<$Res> {
   factory $UserDtoCopyWith(UserDto value, $Res Function(UserDto) then) =
       _$UserDtoCopyWithImpl<$Res, UserDto>;
   @useResult
-  $Res call({String firstName, String lastName, String email, String role});
+  $Res call(
+      {String firstName,
+      String lastName,
+      String email,
+      String role,
+      @DocumentReferenceConverter()
+          List<DocumentReference<Object?>>? children,
+      @DocumentReferenceConverter()
+      @JsonKey(ignore: true)
+          DocumentReference<Object?>? reference});
 }
 
 /// @nodoc
@@ -55,6 +71,8 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
     Object? lastName = null,
     Object? email = null,
     Object? role = null,
+    Object? children = freezed,
+    Object? reference = freezed,
   }) {
     return _then(_value.copyWith(
       firstName: null == firstName
@@ -73,6 +91,14 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as String,
+      children: freezed == children
+          ? _value.children
+          : children // ignore: cast_nullable_to_non_nullable
+              as List<DocumentReference<Object?>>?,
+      reference: freezed == reference
+          ? _value.reference
+          : reference // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>?,
     ) as $Val);
   }
 }
@@ -84,7 +110,16 @@ abstract class _$$_UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
       __$$_UserDtoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String firstName, String lastName, String email, String role});
+  $Res call(
+      {String firstName,
+      String lastName,
+      String email,
+      String role,
+      @DocumentReferenceConverter()
+          List<DocumentReference<Object?>>? children,
+      @DocumentReferenceConverter()
+      @JsonKey(ignore: true)
+          DocumentReference<Object?>? reference});
 }
 
 /// @nodoc
@@ -101,6 +136,8 @@ class __$$_UserDtoCopyWithImpl<$Res>
     Object? lastName = null,
     Object? email = null,
     Object? role = null,
+    Object? children = freezed,
+    Object? reference = freezed,
   }) {
     return _then(_$_UserDto(
       firstName: null == firstName
@@ -119,6 +156,14 @@ class __$$_UserDtoCopyWithImpl<$Res>
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as String,
+      children: freezed == children
+          ? _value._children
+          : children // ignore: cast_nullable_to_non_nullable
+              as List<DocumentReference<Object?>>?,
+      reference: freezed == reference
+          ? _value.reference
+          : reference // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>?,
     ));
   }
 }
@@ -130,8 +175,14 @@ class _$_UserDto extends _UserDto {
       {required this.firstName,
       required this.lastName,
       required this.email,
-      required this.role})
-      : super._();
+      required this.role,
+      @DocumentReferenceConverter()
+          required final List<DocumentReference<Object?>>? children,
+      @DocumentReferenceConverter()
+      @JsonKey(ignore: true)
+          this.reference})
+      : _children = children,
+        super._();
 
   factory _$_UserDto.fromJson(Map<String, dynamic> json) =>
       _$$_UserDtoFromJson(json);
@@ -144,10 +195,25 @@ class _$_UserDto extends _UserDto {
   final String email;
   @override
   final String role;
+  final List<DocumentReference<Object?>>? _children;
+  @override
+  @DocumentReferenceConverter()
+  List<DocumentReference<Object?>>? get children {
+    final value = _children;
+    if (value == null) return null;
+    if (_children is EqualUnmodifiableListView) return _children;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  @DocumentReferenceConverter()
+  @JsonKey(ignore: true)
+  final DocumentReference<Object?>? reference;
 
   @override
   String toString() {
-    return 'UserDto(firstName: $firstName, lastName: $lastName, email: $email, role: $role)';
+    return 'UserDto(firstName: $firstName, lastName: $lastName, email: $email, role: $role, children: $children, reference: $reference)';
   }
 
   @override
@@ -160,13 +226,16 @@ class _$_UserDto extends _UserDto {
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.role, role) || other.role == role));
+            (identical(other.role, role) || other.role == role) &&
+            const DeepCollectionEquality().equals(other._children, _children) &&
+            (identical(other.reference, reference) ||
+                other.reference == reference));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, firstName, lastName, email, role);
+  int get hashCode => Object.hash(runtimeType, firstName, lastName, email, role,
+      const DeepCollectionEquality().hash(_children), reference);
 
   @JsonKey(ignore: true)
   @override
@@ -187,7 +256,12 @@ abstract class _UserDto extends UserDto {
       {required final String firstName,
       required final String lastName,
       required final String email,
-      required final String role}) = _$_UserDto;
+      required final String role,
+      @DocumentReferenceConverter()
+          required final List<DocumentReference<Object?>>? children,
+      @DocumentReferenceConverter()
+      @JsonKey(ignore: true)
+          final DocumentReference<Object?>? reference}) = _$_UserDto;
   _UserDto._() : super._();
 
   factory _UserDto.fromJson(Map<String, dynamic> json) = _$_UserDto.fromJson;
@@ -200,6 +274,13 @@ abstract class _UserDto extends UserDto {
   String get email;
   @override
   String get role;
+  @override
+  @DocumentReferenceConverter()
+  List<DocumentReference<Object?>>? get children;
+  @override
+  @DocumentReferenceConverter()
+  @JsonKey(ignore: true)
+  DocumentReference<Object?>? get reference;
   @override
   @JsonKey(ignore: true)
   _$$_UserDtoCopyWith<_$_UserDto> get copyWith =>

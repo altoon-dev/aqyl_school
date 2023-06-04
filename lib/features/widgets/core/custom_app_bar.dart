@@ -15,9 +15,10 @@ import 'package:flutter/material.dart';
 //   }
 //  }
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  CustomAppBar( {Key? key,this.hasBackButton=false,required this.titleName}) : super(key: key);
+  const CustomAppBar( {Key? key,this.hasBackButton=false,required this.titleName, this.actions}) : super(key: key);
    final bool hasBackButton;
    final String? titleName;
+   final List<Widget>? actions;
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
@@ -26,6 +27,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: Icon(Icons.arrow_back_ios_sharp, color: Colors.black),
         onTap: () => Navigator.of(context).pop(),
       ),
+      actions: actions,
       centerTitle: true,
       automaticallyImplyLeading: hasBackButton,
       title: Text(titleName??"",style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),
