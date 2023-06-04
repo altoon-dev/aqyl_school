@@ -52,6 +52,16 @@ class _LessonScreenState extends State<LessonScreen> {
                 SizedBox(
                   height: 16,
                 ),
+                for (String imageUrl in widget.lesson.images ?? []) ...[
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child : Image.network(
+                      imageUrl,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  SizedBox(height: 4,)
+                ],
                 Text(
                   widget.lesson.lessonContent,
                   style: TextStyle(

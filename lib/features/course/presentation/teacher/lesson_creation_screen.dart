@@ -126,9 +126,12 @@ class _LessonCreationScreenState extends State<LessonCreationScreen> {
                     if (pickedFile != "") {
                       return SizedBox(
                         width: MediaQuery.of(context).size.width - 40,
-                        child: Image.file(
-                          File(pickedFile),
-                          fit: BoxFit.cover,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.file(
+                            File(pickedFile),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       );
                     } else {
@@ -146,6 +149,7 @@ class _LessonCreationScreenState extends State<LessonCreationScreen> {
                             pickedFile = await _picker
                                 .getImage(source: ImageSource.gallery)
                                 .then((value) => value!.path);
+                            print(pickedFile);
                             if (pickedFile != "") {
                               setState(() {});
                             }

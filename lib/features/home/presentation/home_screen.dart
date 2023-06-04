@@ -2,7 +2,6 @@ import 'package:aqyl_school/core/router/auto_router.gr.dart';
 import 'package:aqyl_school/features/course/application/parent_child_watcher/parent_child_watcher_cubit.dart';
 import 'package:aqyl_school/features/course/application/student_course_manager/student_course_manager_cubit.dart';
 import 'package:aqyl_school/features/role/application/role_manager_cubit.dart';
-import 'package:aqyl_school/features/role/application/role_manager_cubit.dart';
 import 'package:aqyl_school/features/role/domain/role.dart';
 import 'package:aqyl_school/features/widgets/cards/child_card.dart';
 import 'package:aqyl_school/features/widgets/cards/group_card.dart';
@@ -23,7 +22,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<RoleManagerCubit, RoleManagerState>(
-      buildWhen: (p,c)=>p.role!=c.role,
+      buildWhen: (p, c) => p.role != c.role,
       builder: (context, state) {
         return SafeArea(
           child: SingleChildScrollView(
@@ -72,15 +71,14 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: 3.h),
-                      if(Role.parent!=state.role)...[
+                      if (Role.parent != state.role) ...[
                         const SearchBar(),
                       ]
                     ],
                   ),
                 ),
                 SizedBox(height: 5.w),
-                if(state.role==Role.student)...[
-                  //TODO тут мы будем получать с firestore документы курсов
+                if (state.role == Role.student) ...[
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -91,7 +89,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                ]else if(state.role==Role.teacher)...[
+                ] else if (state.role == Role.teacher) ...[
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -104,54 +102,66 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
                 SizedBox(height: 5.w),
-                if(state.role==Role.student)...[
-                  BlocBuilder<StudentCourseManagerCubit, StudentCourseManagerState>(
-  builder: (context, state) {
-    return state.map(
-        initial: (_) => const SizedBox(),
-        loadInProgress: (_) => CircularProgressIndicator(),
-        loadCoursesSuccess: (state) {
-          return GridView.count(
-            crossAxisCount: 2,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            mainAxisSpacing: 2.5.w,
-            crossAxisSpacing: 2.5.w,
-            children: List.generate(
-              state.courses.length,
-                  (index) =>
-                  SubjectCard(
-                    color: const Color(0xFFC9E464),
-                    onTap: () => context.router.push( CourseRoute(course: state.courses[index])),
-                    child:  Text(state.courses[index].courseName,style: TextStyle(fontWeight: FontWeight.bold),),
+                if (state.role == Role.student) ...[
+                  BlocBuilder<StudentCourseManagerCubit,
+                      StudentCourseManagerState>(
+                    builder: (context, state) {
+                      return state.map(
+                          initial: (_) => const SizedBox(),
+                          loadInProgress: (_) => CircularProgressIndicator(),
+                          loadCoursesSuccess: (state) {
+                            return GridView.count(
+                              crossAxisCount: 2,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              mainAxisSpacing: 2.5.w,
+                              crossAxisSpacing: 2.5.w,
+                              children: List.generate(
+                                state.courses.length,
+                                (index) => SubjectCard(
+                                  color: const Color(0xFFC9E464),
+                                  onTap: () => context.router.push(CourseRoute(
+                                      course: state.courses[index])),
+                                  child: Text(
+                                    state.courses[index].courseName,
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                          loadCoursesFail: (_) =>
+                              ProjectCriticalFailureDisplay());
+                    },
                   ),
-            ),
-          );
-        },
-        loadCoursesFail: (_) => ProjectCriticalFailureDisplay());
-  },
-),
-                ]else if(state.role==Role.parent)...[
+                ] else if (state.role == Role.parent) ...[
                   BlocBuilder<ParentChildWatcherCubit, ParentChildWatcherState>(
-  builder: (context, state) {
-    return state.map(
-        initial: (_) => const SizedBox(),
-        loadInProgress: (_) => CircularProgressIndicator(),
-        loadChildrenSuccess: (state) {
-          return ListView.builder(  shrinkWrap: true,                  physics: const NeverScrollableScrollPhysics(),
-              itemCount:1,itemBuilder: (context,index){
-                final child=state.children[index];
-                return ChildCard( name: "${child.firstName} ${child.lastName}",group: "SE-2015",);
-              });
-        },
-        loadChildrenFail: (_) => ProjectCriticalFailureDisplay());
-
-  },
-)
-                ]else ...[
-        GroupCard( group: "SE-2015")
+                    builder: (context, state) {
+                      return state.map(
+                          initial: (_) => const SizedBox(),
+                          loadInProgress: (_) => CircularProgressIndicator(),
+                          loadChildrenSuccess: (state) {
+                            return ListView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: 1,
+                                itemBuilder: (context, index) {
+                                  final child = state.children[index];
+                                  return ChildCard(
+                                    name:
+                                        "${child.firstName} ${child.lastName}",
+                                    group: "SE-2015",
+                                  );
+                                });
+                          },
+                          loadChildrenFail: (_) =>
+                              ProjectCriticalFailureDisplay());
+                    },
+                  )
+                ] else ...[
+                  GroupCard(group: "SE-2015")
                 ]
-
               ],
             ),
           ),

@@ -46,9 +46,6 @@ class App extends StatelessWidget {
               create: (context) => StudentCourseManagerCubit()..startWatchAll()
           ),
           BlocProvider(
-              create: (context) => StudentCourseManagerCubit()..startWatchAll()
-          ),
-          BlocProvider(
               create: (context) => ParentReportManagerCubit()
           ),
           BlocProvider(
