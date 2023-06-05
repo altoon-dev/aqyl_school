@@ -48,11 +48,7 @@ class _LessonCreationScreenState extends State<LessonCreationScreen> {
                     final lesson = Lesson(
                         lessonName: _lessonNameController.text,
                         lessonContent: _lessonContentController.text,
-                        images: [
-                          pickedFile.isEmpty
-                              ? "https://cdn.firstcry.com/education/2022/10/17171912/English-Pronouns.jpg"
-                              : pickedFile
-                        ]);
+                        images: pickedFile.isEmpty?null:[pickedFile]);
                     final isSuccess = await context
                         .read<TeacherCourseManagerCubit>()
                         .createLesson(widget.initialCourse, lesson);
