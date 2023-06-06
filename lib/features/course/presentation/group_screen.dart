@@ -21,6 +21,7 @@ class GroupScreen extends StatelessWidget {
       context.read<TeacherCourseManagerCubit>().startWatchAll();
     }
     return CustomScaffold(
+      useAppBar: true,
       body: SingleChildScrollView(
         child: Column(
           children: [

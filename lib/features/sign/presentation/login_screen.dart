@@ -80,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: 64),
+                    const SizedBox(height: 64),
                     const LogoTitle(),
                     SizedBox(height: 2.h),
                     const WelcomeText(),
