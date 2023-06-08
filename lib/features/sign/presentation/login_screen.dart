@@ -181,7 +181,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(height: 1.h,),
-                    GoogleButton(onPressed: () {_authenticateWithGoogle(context);}, ),
                     SizedBox(height: 32),
                   ],
                 ),

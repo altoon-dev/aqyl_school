@@ -74,6 +74,8 @@ class _ReportTeacherCardState extends State<ReportTeacherCard> {
                             visible: isCollapsed,
                             child: Text(
                             widget.lesson.lessonName,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   color: Color(0xff14CBD9),
                                   fontSize: 12,

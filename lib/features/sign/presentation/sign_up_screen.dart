@@ -191,7 +191,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                  // SizedBox(height: 1.h,),
-                  GoogleButton(onPressed: () {_authenticateWithGoogle(context);}, ),
                   SizedBox(height: 64),
 
                 ],
