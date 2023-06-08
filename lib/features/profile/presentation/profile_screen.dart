@@ -5,6 +5,7 @@ import 'package:aqyl_school/features/role/domain/role.dart';
 import 'package:aqyl_school/features/sign/bloc/auth_state.dart';
 import 'package:aqyl_school/features/widgets/core/custom_scaffold.dart';
 import 'package:aqyl_school/features/widgets/critical_failure_display.dart';
+import 'package:aqyl_school/payment_screen.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -130,12 +131,25 @@ class ProfileScreen extends StatelessWidget {
                                             loadInProgress: (_) =>
                                                 CircularProgressIndicator(),
                                             loadChildrenSuccess: (state) {
-                                              return Text(
-                                                "Дочь/Сын:  ${state.children.first.firstName}",
-                                                style: TextStyle(
-                                                  fontSize: 0.28.dp,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
+                                              return Column(
+                                                children: [
+                                                  Text("Дочь/Сын:  ${state.children.first.firstName}",
+                                                    style: TextStyle(
+                                                      fontSize: 0.28.dp,
+                                                      fontWeight: FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                  SizedBox(height: 20,),
+                                                  ElevatedButton(onPressed: () {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(builder: (context) => PaymentScreen()),);},
+                                                      child: Text('Buy course!',
+                                                        style: TextStyle(fontSize: 0.28.dp,
+                                                          fontWeight: FontWeight.bold,),
+                                                      ),
+                                                  ),
+                                                ],
                                               );
                                             },
                                             loadChildrenFail: (_) =>
